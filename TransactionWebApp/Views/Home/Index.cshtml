@@ -1,8 +1,22 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Upload";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h1>Upload File</h1>
+<div class="row">
+    <section>
+        <form method="post" enctype="multipart/form-data" asp-controller="FileUpload" asp-action="Index">
+            <div class="form-group">
+                <div class="col-md-12">
+                    <p>Upload one CSV/XML:</p>
+                    <input type="file" name="file" single/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="submit" value="Upload" id="btn" style="background-color:lightskyblue"/>
+                </div>
+            </div>
+        </form>
+    </section>
 </div>

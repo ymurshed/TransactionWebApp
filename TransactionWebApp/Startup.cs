@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TransactionWebApp.DbModels;
+using TransactionWebApp.Models;
 using TransactionWebApp.Services;
 
 namespace TransactionWebApp
@@ -19,6 +20,7 @@ namespace TransactionWebApp
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            AppDataModel.Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
@@ -33,6 +35,7 @@ namespace TransactionWebApp
             services.AddDbContext<TransactionDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<ITransactionService, TransactionService>();
+            services.AddSingleton(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
