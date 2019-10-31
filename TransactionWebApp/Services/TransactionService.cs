@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TransactionWebApp.Constants;
 using TransactionWebApp.DbModels;
 using TransactionWebApp.Models;
 
@@ -19,13 +20,15 @@ namespace TransactionWebApp.Services
         {
             try
             {
+                Logger.Log.Debug("Adding transaction");
                 DbContext.Transactions.AddRange(transactions);
                 DbContext.SaveChanges();
                 return true;
             }
             catch (Exception e)
             {
-                //Todo: Add log
+                var error = ErrorConstant.SaveTransactionError + e.Message + e.InnerException; 
+                Logger.Log.Error(error);
                 return false;
             }
         }
@@ -48,8 +51,8 @@ namespace TransactionWebApp.Services
             }
             catch (Exception e)
             {
-                //Todo: Add log
-                return null;
+                var error = ErrorConstant.GetTransactionErrorByCode + e.Message + e.InnerException;
+                throw new Exception(error);
             }
         }
 
@@ -71,8 +74,8 @@ namespace TransactionWebApp.Services
             }
             catch (Exception e)
             {
-                //Todo: Add log
-                return null;
+                var error = ErrorConstant.GetTransactionErrorByDateRange + e.Message + e.InnerException; 
+                throw new Exception(error);
             }
         }
 
@@ -94,8 +97,8 @@ namespace TransactionWebApp.Services
             }
             catch (Exception e)
             {
-                //Todo: Add log
-                return null;
+                var error = ErrorConstant.GetTransactionErrorByStatus + e.Message + e.InnerException;
+                throw new Exception(error);
             }
         }
     }

@@ -36,19 +36,19 @@ namespace TransactionWebApp.Controllers
             }
             
             var transactionModel = new TransactionModel();
+            if (System.IO.File.Exists(path))
+            {
+                var fileHandler = FileHandler.GetFileHandler(path);
+                transactionModel = fileHandler.GetTranscations(path, uploadedFileName);
+            }
 
             try
             {
-                if (System.IO.File.Exists(path))
-                {
-                    var fileHandler = FileHandler.GetFileHandler(path);
-                    transactionModel = fileHandler.GetTranscations(path, uploadedFileName);
-                    System.IO.File.Delete(path);
-                }
+                System.IO.File.Delete(path);
             }
             catch (Exception e)
             {
-                // Todo: Add log
+                Logger.Log.Error($"Error deleting file. Error details: {e.InnerException}");
             }
             
             if (transactionModel.Errors.Any())

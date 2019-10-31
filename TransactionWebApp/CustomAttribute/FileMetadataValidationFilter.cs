@@ -22,7 +22,7 @@ namespace TransactionWebApp.CustomAttribute
             if (context.ActionArguments.ContainsKey(CommonConstant.File) &&
                 context.ActionArguments[CommonConstant.File] is FormFile file)
             {
-                var maxSize = AppDataModel.Configuration.GetValue<int>("MaxFileSizeInMb"); 
+                var maxSize = Config.Configuration.GetValue<int>("MaxFileSizeInMb"); 
                 var totalSize = maxSize * CommonConstant.BytesFor1Mb;
                 var fileExtension = Path.GetExtension(file.FileName);
 

@@ -1,8 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using log4net;
+using Microsoft.Extensions.Configuration;
 
 namespace TransactionWebApp.Models
 {
-    public static class AppDataModel
+    public class Config
     {
         public static IConfiguration Configuration;
     }
