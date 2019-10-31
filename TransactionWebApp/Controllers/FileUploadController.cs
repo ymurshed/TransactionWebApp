@@ -23,7 +23,7 @@ namespace TransactionWebApp.Controllers
 
         [HttpPost("FileUpload")]
         [FileMetadataValidationFilter]
-        public async Task<IActionResult> Index(IFormFile file)
+        public async Task<IActionResult> FileProcess(IFormFile file)
         {
             Logger.Log.Debug(LogConstant.FileUploadBeginning);
 

@@ -1,15 +1,15 @@
 ﻿@{
     ViewData["Title"] = "Transaction";
 }
-<h1>Fetch Transaction</h1>
+<h1>Get Transaction</h1>
 
-<div class="container">
-    <section>
+<div class="container" style="width:300px">
+    <section >
         <form method="get" asp-controller="Transaction" asp-action="TransactionsByCurrency">
             <div class="form-group">
                 <input type="text" class="form-control" id="currency" placeholder="Enter currency code" name="currency">
             </div>
-            <button type="submit" class="btn btn-primary">Get Transaction By Currency</button>
+            <button type="submit" class="btn btn-primary">By Currency</button>
         </form>
     </section>
     <br />
@@ -17,13 +17,13 @@
     <section>
         <form method="get" asp-controller="Transaction" asp-action="TransactionsByDateRange">
             <div class="form-group">
-                <label for="startDate">Start Date</label>
+                <label for="startDate"><b>Start Date</b></label>
                 <input type="date" class="form-control" id="startDate" placeholder="Enter start date" name="startDate">
                 
-                <label for="endDate">End Date</label>
+                <label for="endDate"><b>End Date</b></label>
                 <input type="date" class="form-control" id="endDate" placeholder="Enter end date" name="endDate">
             </div>
-            <button type="submit" class="btn btn-primary">Get Transaction By Date Range</button>
+            <button type="submit" class="btn btn-primary">By Date Range</button>
         </form>
     </section>
     <br />
@@ -33,7 +33,7 @@
             <div class="form-group">
                 <input type="text" class="form-control" id="status" placeholder="Enter status" name="status">
             </div>
-            <button type="submit" class="btn btn-primary">Get Transaction By Status</button>
+            <button type="submit" class="btn btn-primary">By Status</button>
         </form>
     </section>
 </div>
