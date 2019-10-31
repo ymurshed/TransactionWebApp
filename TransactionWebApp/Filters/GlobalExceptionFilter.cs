@@ -9,21 +9,20 @@ namespace TransactionWebApp.Filters
     {
         public override void OnException(ExceptionContext context)
         {
-            var error = LogException(context);
+            LogException(context);
             var routeValues = new RouteValueDictionary(new
             {
                 action = "Error",
                 controller = "Home",
-                logMessage = error
+                logMessage = $"{context.Exception.Message} \nSee log for details..."
             });
             context.Result = new RedirectToRouteResult(routeValues);
         }
 
-        private static string LogException(ExceptionContext context)
+        private static void LogException(ExceptionContext context)
         {
             var error = $"Error Origin: {context.ActionDescriptor.DisplayName} ---> Exception: {context.Exception}";
             Logger.Log.Error(error);
-            return error;
         }
     }
 }
