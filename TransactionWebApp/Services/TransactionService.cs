@@ -15,18 +15,18 @@ namespace TransactionWebApp.Services
             DbContext = dbContext;
         }
 
-        public int AddTransactions(IList<Transactions> transactions)
+        public bool AddTransactions(IList<Transactions> transactions)
         {
             try
             {
-                DbContext.Transactions.AddRangeAsync(transactions);
-                var x = DbContext.SaveChangesAsync();
-                return x.Result;
+                DbContext.Transactions.AddRange(transactions);
+                DbContext.SaveChanges();
+                return true;
             }
             catch (Exception e)
             {
                 //Todo: Add log
-                return 0;
+                return false;
             }
         }
 

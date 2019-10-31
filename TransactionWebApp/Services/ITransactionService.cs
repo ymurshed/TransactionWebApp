@@ -8,7 +8,7 @@ namespace TransactionWebApp.Services
 {
     public interface ITransactionService
     {
-        int AddTransactions(IList<Transactions> transactions);
+        bool AddTransactions(IList<Transactions> transactions);
         IQueryable<TransactionResponseModel> GetTransactionsByCurrency(string currencyCode);
         IQueryable<TransactionResponseModel> GetTransactionsByDateRange(DateTime startDate, DateTime endDate);
         IQueryable<TransactionResponseModel> GetTransactionsByStatus(string status);

@@ -31,6 +31,12 @@ namespace TransactionWebApp.CustomAttribute
                     context.Result = new BadRequestObjectResult(errorMsg);
                     return;
                 }
+
+                if (file.Length == 0)
+                {
+                    context.Result = new BadRequestObjectResult(ExceptionConstant.EmptyFile);
+                    return;
+                }
             }
             base.OnActionExecuting(context);
         }

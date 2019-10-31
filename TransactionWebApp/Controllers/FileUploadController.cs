@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.Extensions.Configuration;
 using TransactionWebApp.Constants;
 using TransactionWebApp.CustomAttribute;
+using TransactionWebApp.Helpers;
 using TransactionWebApp.Models;
 using TransactionWebApp.Services;
 
@@ -26,24 +26,37 @@ namespace TransactionWebApp.Controllers
         [FileMetadataValidationFilter]
         public async Task<IActionResult> Index(IFormFile file)
         {
-            if (file.Length > 0)
+            var tempServerFilePath = AppDataModel.Configuration.GetValue<string>("ServerFilePath");
+
+            var uploadedFileName = Path.GetFileName(file.FileName);
+            var tempFileId = Guid.NewGuid() + Path.GetExtension(file.FileName);
+            var path = Path.Combine(tempServerFilePath, tempFileId);
+
+            using (var stream = new FileStream(path, FileMode.Create))
             {
-                var uploadedFileName = Path.GetFileName(file.FileName);
-                var tempFileId = Guid.NewGuid() + Path.GetExtension(file.FileName);
-                var path = Path.Combine(CommonConstant.UploadedFiledLocation, tempFileId);
-
-                using (var stream = new FileStream(path, FileMode.Create))
-                {
-                    await file.CopyToAsync(stream);
-                }
-
-                if (System.IO.File.Exists(path) && new FileInfo(path).Length != 0)
-                {
-                   // Todo: Create file handler
-                }
+                await file.CopyToAsync(stream);
             }
 
-            return Ok(new { count = 1, file.Length, file });
+            var transactionModel = new TransactionModel();
+
+            if (System.IO.File.Exists(path) && new FileInfo(path).Length != 0)
+            {
+                var fileHandler = FileHandler.GetFileHandler(path);
+                transactionModel = fileHandler.GetTranscations(path, uploadedFileName);
+            }
+
+            // Todo: Need to handle
+            //System.IO.File.Delete(path);
+
+            if (transactionModel.Errors.Any())
+            {
+                var errorMsg = string.Join("!", transactionModel.Errors);
+                return BadRequest(errorMsg);
+            }
+
+            var isSaved = TransactionService.AddTransactions(transactionModel.Transcations);
+            if (isSaved) return Ok();
+            return BadRequest("File upload failed!");
         }
     }
 }
