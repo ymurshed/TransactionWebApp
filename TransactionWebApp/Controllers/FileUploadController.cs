@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Internal;
-using Microsoft.Extensions.Configuration;
 using TransactionWebApp.Constants;
 using TransactionWebApp.CustomAttribute;
 using TransactionWebApp.Helpers;
@@ -26,37 +25,41 @@ namespace TransactionWebApp.Controllers
         [FileMetadataValidationFilter]
         public async Task<IActionResult> Index(IFormFile file)
         {
-            var tempServerFilePath = AppDataModel.Configuration.GetValue<string>("ServerFilePath");
-
+            var rootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\files");
             var uploadedFileName = Path.GetFileName(file.FileName);
             var tempFileId = Guid.NewGuid() + Path.GetExtension(file.FileName);
-            var path = Path.Combine(tempServerFilePath, tempFileId);
+            var path = Path.Combine(rootPath, tempFileId);
 
-            using (var stream = new FileStream(path, FileMode.Create))
+            using (var stream = new FileStream(path, FileMode.Create, FileAccess.ReadWrite, FileShare.None))
             {
                 await file.CopyToAsync(stream);
             }
-
+            
             var transactionModel = new TransactionModel();
 
-            if (System.IO.File.Exists(path) && new FileInfo(path).Length != 0)
+            try
             {
-                var fileHandler = FileHandler.GetFileHandler(path);
-                transactionModel = fileHandler.GetTranscations(path, uploadedFileName);
+                if (System.IO.File.Exists(path))
+                {
+                    var fileHandler = FileHandler.GetFileHandler(path);
+                    transactionModel = fileHandler.GetTranscations(path, uploadedFileName);
+                    System.IO.File.Delete(path);
+                }
             }
-
-            // Todo: Need to handle
-            //System.IO.File.Delete(path);
-
+            catch (Exception e)
+            {
+                // Todo: Add log
+            }
+            
             if (transactionModel.Errors.Any())
             {
-                var errorMsg = string.Join("!", transactionModel.Errors);
+                var errorMsg = string.Join("\n", transactionModel.Errors);
                 return BadRequest(errorMsg);
             }
 
             var isSaved = TransactionService.AddTransactions(transactionModel.Transcations);
-            if (isSaved) return Ok();
-            return BadRequest("File upload failed!");
+            if (isSaved) return Ok("Success!");
+            return BadRequest(ErrorConstant.FileUploadFailed);
         }
     }
 }

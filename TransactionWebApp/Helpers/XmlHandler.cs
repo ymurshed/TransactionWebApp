@@ -54,9 +54,13 @@ namespace TransactionWebApp.Helpers
             try
             {
                 var serializer = new XmlSerializer(typeof(XmlRootModel));
-                if (serializer.Deserialize(new StreamReader(path)) is XmlRootModel result)
+
+                using (var sr = new StreamReader(path))
                 {
-                    xmlModels = result.XmlModels;
+                    if (serializer.Deserialize(sr) is XmlRootModel result)
+                    {
+                        xmlModels = result.XmlModels;
+                    }
                 }
             }
             catch (Exception e)

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Configuration;
 using TransactionWebApp.Constants;
 using TransactionWebApp.Models;
@@ -12,6 +13,12 @@ namespace TransactionWebApp.CustomAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {
+            if (!context.ActionArguments.Any())
+            {
+                context.Result = new BadRequestObjectResult(ErrorConstant.NoFileSelected);
+                return;
+            }
+
             if (context.ActionArguments.ContainsKey(CommonConstant.File) &&
                 context.ActionArguments[CommonConstant.File] is FormFile file)
             {
@@ -21,20 +28,19 @@ namespace TransactionWebApp.CustomAttribute
 
                 if (fileExtension != CommonConstant.Csv && fileExtension != CommonConstant.Xml)
                 {
-                    context.Result = new BadRequestObjectResult(ExceptionConstant.UnknownFileFormat);
-                    return;
-                }
-
-                if (file.Length > totalSize)
-                {
-                    var errorMsg = string.Format(ExceptionConstant.FileSizeExceeds, maxSize);
-                    context.Result = new BadRequestObjectResult(errorMsg);
+                    context.Result = new BadRequestObjectResult(ErrorConstant.UnknownFileFormat);
                     return;
                 }
 
                 if (file.Length == 0)
                 {
-                    context.Result = new BadRequestObjectResult(ExceptionConstant.EmptyFile);
+                    context.Result = new BadRequestObjectResult(ErrorConstant.EmptyFile);
+                    return;
+                }
+
+                if (file.Length > totalSize)
+                {
+                    context.Result = new BadRequestObjectResult($"{ErrorConstant.FileSizeExceeds}{maxSize}Mb");
                     return;
                 }
             }

@@ -6,8 +6,6 @@
         public const string Csv = ".csv";
         public const string Xml = ".xml";
 
-        public const string FileUploadResponseMessageKey = "file-upload-response";
-        
         public const int BytesFor1Mb = 1048576;
 
         public const string TransactionId = "TransactionId";
