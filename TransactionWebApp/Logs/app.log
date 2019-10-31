@@ -1,0 +1,99 @@
+2019-11-01 01:19:33,782 [10] DEBUG - Executing /Home/Upload
+2019-11-01 01:19:33,963 [10] DEBUG - Finished executing /Home/Upload - time spent: 182 ms
+2019-11-01 01:19:56,053 [6] DEBUG - Executing /FileUpload/FileProcess
+2019-11-01 01:19:56,091 [6] DEBUG - File upload beginning.
+2019-11-01 01:19:56,111 [10] DEBUG - Uploaded file saved.
+2019-11-01 01:19:56,340 [10] DEBUG - Temporarily file deleted.
+2019-11-01 01:19:56,340 [10] DEBUG - Received TransactionModel.
+2019-11-01 01:19:56,341 [10] DEBUG - Adding transactions.
+2019-11-01 01:19:56,759 [10] INFO - File uploaded successfully.
+2019-11-01 01:19:56,767 [10] DEBUG - Finished executing /FileUpload/FileProcess - time spent: 714 ms
+2019-11-01 01:20:11,258 [6] DEBUG - Executing /Home/Upload
+2019-11-01 01:20:11,297 [6] DEBUG - Finished executing /Home/Upload - time spent: 38 ms
+2019-11-01 01:20:12,658 [6] DEBUG - Executing /Home/Transaction
+2019-11-01 01:20:12,689 [6] DEBUG - Finished executing /Home/Transaction - time spent: 31 ms
+2019-11-01 01:20:15,699 [6] DEBUG - Executing /Transaction/TransactionsByCurrency
+2019-11-01 01:20:15,730 [6] DEBUG - Fetching all transactions by currency code.
+2019-11-01 01:20:15,740 [6] DEBUG - Finished executing /Transaction/TransactionsByCurrency - time spent: 41 ms
+2019-11-01 01:23:52,179 [6] DEBUG - Executing /Home/Upload
+2019-11-01 01:23:52,311 [6] DEBUG - Finished executing /Home/Upload - time spent: 132 ms
+2019-11-01 01:23:59,119 [6] DEBUG - Executing /Home/Transaction
+2019-11-01 01:23:59,152 [6] DEBUG - Finished executing /Home/Transaction - time spent: 32 ms
+2019-11-01 01:24:03,487 [6] DEBUG - Executing /Transaction/TransactionsByCurrency
+2019-11-01 01:24:03,660 [6] DEBUG - Finished executing /Transaction/TransactionsByCurrency - time spent: 172 ms
+2019-11-01 01:30:08,176 [9] DEBUG - Executing /Home/Upload
+2019-11-01 01:30:08,295 [9] DEBUG - Finished executing /Home/Upload - time spent: 120 ms
+2019-11-01 01:30:14,264 [6] DEBUG - Executing /Home/Upload
+2019-11-01 01:30:14,292 [6] DEBUG - Finished executing /Home/Upload - time spent: 27 ms
+2019-11-01 01:30:15,448 [7] DEBUG - Executing /Home/Transaction
+2019-11-01 01:30:15,479 [7] DEBUG - Finished executing /Home/Transaction - time spent: 31 ms
+2019-11-01 01:30:17,000 [6] DEBUG - Executing /Home/Upload
+2019-11-01 01:30:17,027 [6] DEBUG - Finished executing /Home/Upload - time spent: 27 ms
+2019-11-01 01:30:18,789 [7] DEBUG - Executing /Home/Transaction
+2019-11-01 01:30:18,822 [7] DEBUG - Finished executing /Home/Transaction - time spent: 33 ms
+2019-11-01 01:30:29,146 [12] DEBUG - Executing /Transaction/TransactionsByCurrency
+2019-11-01 01:31:51,258 [12] DEBUG - Finished executing /Transaction/TransactionsByCurrency - time spent: 82111 ms
+2019-11-01 01:31:51,754 [12] ERROR - Error Origin: TransactionWebApp.Controllers.TransactionController.TransactionsByCurrency (TransactionWebApp) ---> Exception: System.Exception: Error getting transaction by currency code. Error details: Attempted to divide by zero.
+   at TransactionWebApp.Services.TransactionService.GetTransactionsByCurrency(String currencyCode) in E:\Codebase\Personal\github-ymurshed\TransactionWebApp\TransactionWebApp\Services\TransactionService.cs:line 61
+   at TransactionWebApp.Controllers.TransactionController.TransactionsByCurrency(String currency) in E:\Codebase\Personal\github-ymurshed\TransactionWebApp\TransactionWebApp\Controllers\TransactionController.cs:line 18
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
+2019-11-01 01:31:52,201 [15] DEBUG - Executing /Home/Error
+2019-11-01 01:31:52,229 [15] DEBUG - Finished executing /Home/Error - time spent: 28 ms
+2019-11-01 01:33:27,890 [9] DEBUG - Executing /Home/Upload
+2019-11-01 01:33:28,032 [9] DEBUG - Finished executing /Home/Upload - time spent: 142 ms
+2019-11-01 01:33:30,531 [6] DEBUG - Executing /Home/Transaction
+2019-11-01 01:33:30,567 [6] DEBUG - Finished executing /Home/Transaction - time spent: 35 ms
+2019-11-01 01:33:33,023 [6] DEBUG - Executing /Transaction/TransactionsByCurrency
+2019-11-01 01:33:35,429 [6] DEBUG - Finished executing /Transaction/TransactionsByCurrency - time spent: 2405 ms
+2019-11-01 01:33:35,516 [6] ERROR - Error Origin: TransactionWebApp.Controllers.TransactionController.TransactionsByCurrency (TransactionWebApp) ---> Exception: System.Exception: Error getting transaction by currency code. Error details: System.DivideByZeroException: Attempted to divide by zero.
+   at TransactionWebApp.Services.TransactionService.GetTransactionsByCurrency(String currencyCode) in E:\Codebase\Personal\github-ymurshed\TransactionWebApp\TransactionWebApp\Services\TransactionService.cs:line 42
+   at TransactionWebApp.Services.TransactionService.GetTransactionsByCurrency(String currencyCode) in E:\Codebase\Personal\github-ymurshed\TransactionWebApp\TransactionWebApp\Services\TransactionService.cs:line 61
+   at TransactionWebApp.Controllers.TransactionController.TransactionsByCurrency(String currency) in E:\Codebase\Personal\github-ymurshed\TransactionWebApp\TransactionWebApp\Controllers\TransactionController.cs:line 18
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
+2019-11-01 01:33:48,818 [12] DEBUG - Executing /Transaction/TransactionsByCurrency
+2019-11-01 01:34:00,916 [12] DEBUG - Finished executing /Transaction/TransactionsByCurrency - time spent: 12097 ms
+2019-11-01 01:34:01,000 [12] ERROR - Error Origin: TransactionWebApp.Controllers.TransactionController.TransactionsByCurrency (TransactionWebApp) ---> Exception: System.Exception: Error getting transaction by currency code. Error details: System.DivideByZeroException: Attempted to divide by zero.
+   at TransactionWebApp.Services.TransactionService.GetTransactionsByCurrency(String currencyCode) in E:\Codebase\Personal\github-ymurshed\TransactionWebApp\TransactionWebApp\Services\TransactionService.cs:line 42
+   at TransactionWebApp.Services.TransactionService.GetTransactionsByCurrency(String currencyCode) in E:\Codebase\Personal\github-ymurshed\TransactionWebApp\TransactionWebApp\Services\TransactionService.cs:line 61
+   at TransactionWebApp.Controllers.TransactionController.TransactionsByCurrency(String currency) in E:\Codebase\Personal\github-ymurshed\TransactionWebApp\TransactionWebApp\Controllers\TransactionController.cs:line 18
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
+2019-11-01 01:37:37,065 [6] DEBUG - Executing /Home/Upload
+2019-11-01 01:37:37,222 [6] DEBUG - Finished executing /Home/Upload - time spent: 157 ms
+2019-11-01 01:37:39,809 [12] DEBUG - Executing /Home/Transaction
+2019-11-01 01:37:39,837 [12] DEBUG - Finished executing /Home/Transaction - time spent: 27 ms
+2019-11-01 01:37:44,647 [6] DEBUG - Executing /Transaction/TransactionsByCurrency
+2019-11-01 01:37:44,691 [6] DEBUG - Fetching all transactions by currency code.
+2019-11-01 01:37:44,850 [6] DEBUG - Finished executing /Transaction/TransactionsByCurrency - time spent: 203 ms
+2019-11-01 01:38:03,919 [6] DEBUG - Executing /Transaction/TransactionsByStatus
+2019-11-01 01:38:03,950 [6] DEBUG - Fetching all transactions by status.
+2019-11-01 01:38:03,956 [6] DEBUG - Finished executing /Transaction/TransactionsByStatus - time spent: 36 ms
+2019-11-01 01:38:07,589 [6] DEBUG - Executing /Transaction/TransactionsByDateRange
+2019-11-01 01:38:07,624 [6] DEBUG - Fetching all transactions by date range.
+2019-11-01 01:38:07,631 [6] DEBUG - Finished executing /Transaction/TransactionsByDateRange - time spent: 41 ms
+2019-11-01 01:38:31,122 [6] DEBUG - Executing /Transaction/TransactionsByDateRange
+2019-11-01 01:38:40,151 [6] DEBUG - Fetching all transactions by date range.
+2019-11-01 01:38:47,302 [6] DEBUG - Finished executing /Transaction/TransactionsByDateRange - time spent: 16179 ms
