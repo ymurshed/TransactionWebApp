@@ -23,11 +23,11 @@ namespace TransactionWebApp.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Transaction()
         {
             return View();
         }
-        
+
         public IActionResult Error(string logMessage)
         {
             var viewModel = new ErrorViewModel
