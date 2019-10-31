@@ -4,7 +4,7 @@
 <h1>Get Transaction</h1>
 
 <div class="container" style="width:300px">
-    <section >
+    <section>
         <form method="get" asp-controller="Transaction" asp-action="TransactionsByCurrency">
             <div class="form-group">
                 <input type="text" pattern="^[a-zA-Z]{3}$" class="form-control" id="currency" placeholder="Enter currency code" name="currency" required>
@@ -13,14 +13,14 @@
         </form>
     </section>
     <br />
-    
+
     <section>
         <form method="get" asp-controller="Transaction" asp-action="TransactionsByDateRange">
             <div class="form-group">
                 <label for="startDate"><b>Select Start Date</b></label>
                 <input type="date" pattern="/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/" min="1901-01-01" max="2099-12-31"
                        class="form-control" id="startDate" placeholder="Enter start date" name="startDate" required>
-                
+
                 <label for="endDate"><b>Select End Date</b></label>
                 <input type="date" pattern="/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/" min="1901-01-01" max="2099-12-31"
                        class="form-control" id="endDate" placeholder="Enter end date" name="endDate" required>
@@ -29,7 +29,7 @@
         </form>
     </section>
     <br />
-    
+
     <section>
         <form method="get" asp-controller="Transaction" asp-action="TransactionsByStatus">
             <div class="form-group">

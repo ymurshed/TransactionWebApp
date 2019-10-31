@@ -49,7 +49,7 @@ namespace TransactionWebApp
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error/Error");
             }
 
             app.UseStaticFiles();
@@ -58,7 +58,7 @@ namespace TransactionWebApp
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Upload}/{id?}");
+                    template: "{controller=FileUpload}/{action=Index}/{id?}");
             });
         }
     }

@@ -7,7 +7,12 @@ namespace TransactionWebApp.Controllers
     public class TransactionController : Controller
     {
         public ITransactionService TransactionService { get; set; }
-        
+
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         public TransactionController(ITransactionService transactionService)
         {
             TransactionService = transactionService;

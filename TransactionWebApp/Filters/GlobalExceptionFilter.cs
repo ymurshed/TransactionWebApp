@@ -13,7 +13,7 @@ namespace TransactionWebApp.Filters
             var routeValues = new RouteValueDictionary(new
             {
                 action = "Error",
-                controller = "Home",
+                controller = "Error",
                 logMessage = $"{context.Exception.Message} \nSee log for details..."
             });
             context.Result = new RedirectToRouteResult(routeValues);
