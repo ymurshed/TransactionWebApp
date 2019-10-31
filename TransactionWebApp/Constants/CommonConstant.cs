@@ -17,5 +17,6 @@
         public const string InvalidItems = "Found Invalid Items: ";
 
         public const string DateTimeFormatForCsv = "dd/MM/yyyy HH:mm:ss";
+        public const string StopwatchKey = "DebugLoggingStopWatch";
     }
 }

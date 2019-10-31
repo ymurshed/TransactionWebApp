@@ -28,6 +28,7 @@ namespace TransactionWebApp
             services.AddMvc(config =>
                 {
                     config.Filters.Add(typeof(GlobalExceptionFilter));
+                    config.Filters.Add(typeof(LoggingFilter));
                 }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore)
                 .AddJsonOptions(y => y.SerializerSettings.DateFormatString = "dd-MM-yyyy HH:MM");
