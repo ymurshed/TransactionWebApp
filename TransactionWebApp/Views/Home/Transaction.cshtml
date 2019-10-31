@@ -7,7 +7,7 @@
     <section >
         <form method="get" asp-controller="Transaction" asp-action="TransactionsByCurrency">
             <div class="form-group">
-                <input type="text" class="form-control" id="currency" placeholder="Enter currency code" name="currency">
+                <input type="text" pattern="^[a-zA-Z]{3}$" class="form-control" id="currency" placeholder="Enter currency code" name="currency" required>
             </div>
             <button type="submit" class="btn btn-primary">By Currency</button>
         </form>
@@ -17,11 +17,13 @@
     <section>
         <form method="get" asp-controller="Transaction" asp-action="TransactionsByDateRange">
             <div class="form-group">
-                <label for="startDate"><b>Start Date</b></label>
-                <input type="date" class="form-control" id="startDate" placeholder="Enter start date" name="startDate">
+                <label for="startDate"><b>Select Start Date</b></label>
+                <input type="date" pattern="/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/" min="1901-01-01" max="2099-12-31"
+                       class="form-control" id="startDate" placeholder="Enter start date" name="startDate" required>
                 
-                <label for="endDate"><b>End Date</b></label>
-                <input type="date" class="form-control" id="endDate" placeholder="Enter end date" name="endDate">
+                <label for="endDate"><b>Select End Date</b></label>
+                <input type="date" pattern="/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/" min="1901-01-01" max="2099-12-31"
+                       class="form-control" id="endDate" placeholder="Enter end date" name="endDate" required>
             </div>
             <button type="submit" class="btn btn-primary">By Date Range</button>
         </form>
@@ -31,7 +33,7 @@
     <section>
         <form method="get" asp-controller="Transaction" asp-action="TransactionsByStatus">
             <div class="form-group">
-                <input type="text" class="form-control" id="status" placeholder="Enter status" name="status">
+                <input type="text" pattern="^[a-zA-Z]{1,10}$" class="form-control" id="status" placeholder="Enter status" name="status" required>
             </div>
             <button type="submit" class="btn btn-primary">By Status</button>
         </form>
