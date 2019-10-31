@@ -20,14 +20,15 @@ namespace TransactionWebApp.Services
         {
             try
             {
-                Logger.Log.Debug("Adding transaction");
+                Logger.Log.Debug(LogConstant.SaveTransaction);
+
                 DbContext.Transactions.AddRange(transactions);
                 DbContext.SaveChanges();
                 return true;
             }
             catch (Exception e)
             {
-                var error = ErrorConstant.SaveTransactionError + e.Message + e.InnerException; 
+                var error = LogConstant.SaveTransactionError + e.Message + e.InnerException; 
                 Logger.Log.Error(error);
                 return false;
             }
@@ -37,6 +38,8 @@ namespace TransactionWebApp.Services
         {
             try
             {
+                Logger.Log.Debug(LogConstant.GetTransactionByCode);
+
                 var ctx = DbContext;
                 var response = from t in ctx.Transactions join ts in ctx.TransactionStatus
                                 on t.Status equals ts.Status
@@ -51,7 +54,7 @@ namespace TransactionWebApp.Services
             }
             catch (Exception e)
             {
-                var error = ErrorConstant.GetTransactionErrorByCode + e.Message + e.InnerException;
+                var error = LogConstant.GetTransactionErrorByCode + e.Message + e.InnerException;
                 throw new Exception(error);
             }
         }
@@ -60,6 +63,8 @@ namespace TransactionWebApp.Services
         {
             try
             {
+                Logger.Log.Debug(LogConstant.GetTransactionByDateRange);
+
                 var ctx = DbContext;
                 var response = from t in ctx.Transactions join ts in ctx.TransactionStatus
                                 on t.Status equals ts.Status
@@ -74,7 +79,7 @@ namespace TransactionWebApp.Services
             }
             catch (Exception e)
             {
-                var error = ErrorConstant.GetTransactionErrorByDateRange + e.Message + e.InnerException; 
+                var error = LogConstant.GetTransactionErrorByDateRange + e.Message + e.InnerException; 
                 throw new Exception(error);
             }
         }
@@ -83,6 +88,8 @@ namespace TransactionWebApp.Services
         {
             try
             {
+                Logger.Log.Debug(LogConstant.GetTransactionByStatus);
+
                 var ctx = DbContext;
                 var response = from t in ctx.Transactions join ts in ctx.TransactionStatus
                                 on t.Status equals ts.Status
@@ -97,7 +104,7 @@ namespace TransactionWebApp.Services
             }
             catch (Exception e)
             {
-                var error = ErrorConstant.GetTransactionErrorByStatus + e.Message + e.InnerException;
+                var error = LogConstant.GetTransactionErrorByStatus + e.Message + e.InnerException;
                 throw new Exception(error);
             }
         }

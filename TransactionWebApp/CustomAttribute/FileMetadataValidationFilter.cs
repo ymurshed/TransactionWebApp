@@ -15,7 +15,7 @@ namespace TransactionWebApp.CustomAttribute
         {
             if (!context.ActionArguments.Any())
             {
-                context.Result = new BadRequestObjectResult(ErrorConstant.NoFileSelected);
+                context.Result = new BadRequestObjectResult(LogConstant.NoFileSelected);
                 return;
             }
 
@@ -28,19 +28,19 @@ namespace TransactionWebApp.CustomAttribute
 
                 if (fileExtension != CommonConstant.Csv && fileExtension != CommonConstant.Xml)
                 {
-                    context.Result = new BadRequestObjectResult(ErrorConstant.UnknownFileFormat);
+                    context.Result = new BadRequestObjectResult(LogConstant.UnknownFileFormat);
                     return;
                 }
 
                 if (file.Length == 0)
                 {
-                    context.Result = new BadRequestObjectResult(ErrorConstant.EmptyFile);
+                    context.Result = new BadRequestObjectResult(LogConstant.EmptyFile);
                     return;
                 }
 
                 if (file.Length > totalSize)
                 {
-                    context.Result = new BadRequestObjectResult($"{ErrorConstant.FileSizeExceeds}{maxSize}Mb");
+                    context.Result = new BadRequestObjectResult($"{LogConstant.FileSizeExceeds}{maxSize}Mb");
                     return;
                 }
             }

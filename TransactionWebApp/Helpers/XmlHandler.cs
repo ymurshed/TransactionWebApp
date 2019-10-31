@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
+using TransactionWebApp.Constants;
 using TransactionWebApp.DbModels;
 using TransactionWebApp.Models;
 
@@ -15,7 +16,7 @@ namespace TransactionWebApp.Helpers
             var xmlModels = Parse(path);
             if (!xmlModels.Any())
             {
-                //TODO: Add log
+                Logger.Log.Debug(LogConstant.NoXmlModel);
                 return null;
             }
 
@@ -65,7 +66,7 @@ namespace TransactionWebApp.Helpers
             }
             catch (Exception e)
             {
-                //Todo: Add log
+                Logger.Log.Error(LogConstant.XmlParseError + e.Message + e.InnerException);
             }
             return xmlModels;
         }

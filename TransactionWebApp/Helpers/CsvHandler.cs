@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using TransactionWebApp.Constants;
 using TransactionWebApp.DbModels;
 using TransactionWebApp.Models;
 
@@ -15,7 +16,7 @@ namespace TransactionWebApp.Helpers
             var csvModels = Parse(path);
             if (!csvModels.Any())
             {
-                //TODO: Add log
+                Logger.Log.Debug(LogConstant.NoCsvModel);
                 return null;
             }
 
@@ -89,7 +90,7 @@ namespace TransactionWebApp.Helpers
             }
             catch (Exception e)
             {
-                //Todo: Add log
+                Logger.Log.Error(LogConstant.CsvParseError + e.Message + e.InnerException);
             }
             return csvModels;
         }
