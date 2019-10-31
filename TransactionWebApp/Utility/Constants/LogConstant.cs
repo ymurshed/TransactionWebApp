@@ -1,4 +1,4 @@
-﻿namespace TransactionWebApp.Constants
+﻿namespace TransactionWebApp.Utility.Constants
 {
     public class LogConstant
     {
@@ -20,7 +20,9 @@
         public static string GetTransactionByStatus = "Fetching all transactions by status.";
 
         public static string FileUploadBeginning = "File upload beginning.";
-        public static string FileSavedTemporarily = "Temporarily uploaded file saved.";
+        public static string TempFileSaved = "Uploaded file saved.";
+        public static string TempFileNotSaved = "Uploaded file not saved.";
+
         public static string DeletedTemporarilyFile = "Temporarily file deleted.";
         public static string ReceivedTransactionModel = "Received TransactionModel.";
         public const string FileUploadSuccessful = "File uploaded successfully.";
@@ -31,7 +33,5 @@
         public const string NoXmlModel = "No XmlModel found.";
 
         public const string ErrorProcessingFile = "No TransactionModel found. Error occurred during file processing!";
-
-
     }
 }

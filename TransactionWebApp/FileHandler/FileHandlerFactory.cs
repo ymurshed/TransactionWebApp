@@ -1,9 +1,10 @@
 ﻿using System.IO;
-using TransactionWebApp.Constants;
+using TransactionWebApp.FileHandler;
+using TransactionWebApp.Utility.Constants;
 
 namespace TransactionWebApp.Helpers
 {
-    public class FileHandler
+    public class FileHandlerFactory
     {
         public static IFileHandler GetFileHandler(string path)
         {

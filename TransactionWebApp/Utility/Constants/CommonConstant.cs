@@ -1,4 +1,4 @@
-﻿namespace TransactionWebApp.Constants
+﻿namespace TransactionWebApp.Utility.Constants
 {
     public class CommonConstant
     {

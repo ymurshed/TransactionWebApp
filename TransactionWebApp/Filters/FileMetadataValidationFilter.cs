@@ -4,10 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Configuration;
-using TransactionWebApp.Constants;
 using TransactionWebApp.Models;
+using TransactionWebApp.Utility.Constants;
 
-namespace TransactionWebApp.CustomAttribute
+namespace TransactionWebApp.Filters
 {
     public class FileMetadataValidationFilter : ActionFilterAttribute
     {

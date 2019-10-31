@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
-using TransactionWebApp.Constants;
 using TransactionWebApp.DbModels;
 using TransactionWebApp.Models;
+using TransactionWebApp.Utility.Constants;
+using TransactionWebApp.Utility.Helpers;
 
-namespace TransactionWebApp.Helpers
+namespace TransactionWebApp.FileHandler
 {
     public class XmlHandler : IFileHandler
     {

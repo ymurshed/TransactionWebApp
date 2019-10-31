@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Internal;
-using TransactionWebApp.Constants;
-using TransactionWebApp.CustomAttribute;
+using TransactionWebApp.Filters;
 using TransactionWebApp.Helpers;
 using TransactionWebApp.Models;
 using TransactionWebApp.Services;
+using TransactionWebApp.Utility.Constants;
 
 namespace TransactionWebApp.Controllers
 {
@@ -35,14 +35,19 @@ namespace TransactionWebApp.Controllers
             using (var stream = new FileStream(path, FileMode.Create, FileAccess.ReadWrite, FileShare.None))
             {
                 await file.CopyToAsync(stream);
-                Logger.Log.Debug(LogConstant.FileSavedTemporarily);
+                Logger.Log.Debug(LogConstant.TempFileSaved);
             }
 
-            var transactionModel = new TransactionModel();
+            TransactionModel transactionModel;
             if (System.IO.File.Exists(path))
             {
-                var fileHandler = FileHandler.GetFileHandler(path);
+                var fileHandler = FileHandlerFactory.GetFileHandler(path);
                 transactionModel = fileHandler.GetTranscations(path, uploadedFileName);
+            }
+            else
+            {
+                Logger.Log.Debug(LogConstant.TempFileNotSaved);
+                return BadRequest(LogConstant.FileUploadFailed);
             }
 
             try

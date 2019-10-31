@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using TransactionWebApp.Constants;
 using TransactionWebApp.DbModels;
 using TransactionWebApp.Models;
+using TransactionWebApp.Utility.Constants;
 
 namespace TransactionWebApp.Services
 {
@@ -47,7 +47,7 @@ namespace TransactionWebApp.Services
                                 select new TransactionResponseModel
                                 {
                                     Id = t.TransactionId,
-                                    Payment = t.Amount + " " + t.CurrencyCode,
+                                    Payment = string.Concat(t.Amount, " ", t.CurrencyCode),
                                     Status = ts.Symbol
                                 };
                 return response;
@@ -72,7 +72,7 @@ namespace TransactionWebApp.Services
                                 select new TransactionResponseModel
                                 {
                                     Id = t.TransactionId,
-                                    Payment = t.Amount + " " + t.CurrencyCode,
+                                    Payment = string.Concat(t.Amount, " " , t.CurrencyCode),
                                     Status = ts.Symbol
                                 };
                 return response;
@@ -97,7 +97,7 @@ namespace TransactionWebApp.Services
                                 select new TransactionResponseModel
                                 {
                                     Id = t.TransactionId,
-                                    Payment = t.Amount + " " + t.CurrencyCode,
+                                    Payment = string.Concat(t.Amount, " ", t.CurrencyCode),
                                     Status = ts.Symbol
                                 };
                 return response;

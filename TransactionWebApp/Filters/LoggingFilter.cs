@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc.Filters;
-using TransactionWebApp.Constants;
 using TransactionWebApp.Models;
+using TransactionWebApp.Utility.Constants;
 
-namespace TransactionWebApp.CustomAttribute
+namespace TransactionWebApp.Filters
 {
     public class LoggingFilter : ActionFilterAttribute
     {
@@ -42,7 +42,7 @@ namespace TransactionWebApp.CustomAttribute
                     var actionName = context.ActionDescriptor.RouteValues.ContainsKey("action")
                         ? context.ActionDescriptor.RouteValues["action"] : string.Empty;
 
-                    var message = $"Finished executing /{controllerName}/{actionName} - time spend: {timeSpent} ms";
+                    var message = $"Finished executing /{controllerName}/{actionName} - time spent: {timeSpent} ms";
 
                     Logger.Log.Debug(message);
                     context.HttpContext.Items.Remove(CommonConstant.StopwatchKey);

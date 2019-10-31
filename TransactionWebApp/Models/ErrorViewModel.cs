@@ -1,5 +1,3 @@
-using System;
-
 namespace TransactionWebApp.Models
 {
     public class ErrorViewModel

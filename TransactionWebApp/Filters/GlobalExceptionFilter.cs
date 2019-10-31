@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Routing;
 using TransactionWebApp.Models;
 
-namespace TransactionWebApp.CustomAttribute
+namespace TransactionWebApp.Filters
 {
     public class GlobalExceptionFilter : ExceptionFilterAttribute
     {
@@ -21,9 +21,7 @@ namespace TransactionWebApp.CustomAttribute
 
         private static string LogException(ExceptionContext context)
         {
-            var e = context.Exception;
-            var error =
-                $"Error from: {context.ActionDescriptor.DisplayName} --- Exception: {e.Message} --- StackTrace: {e.StackTrace}";
+            var error = $"Error Origin: {context.ActionDescriptor.DisplayName} ---> Exception: {context.Exception}";
             Logger.Log.Error(error);
             return error;
         }

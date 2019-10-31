@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using TransactionWebApp.Constants;
 using TransactionWebApp.DbModels;
 using TransactionWebApp.Models;
+using TransactionWebApp.Utility.Constants;
 
-namespace TransactionWebApp.Helpers
+namespace TransactionWebApp.Utility.Helpers
 {
     public static class CvsHelper
     {
