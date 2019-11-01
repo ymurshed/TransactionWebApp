@@ -1,8 +1,7 @@
 ﻿using System.IO;
-using TransactionWebApp.FileHandler;
 using TransactionWebApp.Utility.Constants;
 
-namespace TransactionWebApp.Helpers
+namespace TransactionWebApp.FileHandler
 {
     public class FileHandlerFactory
     {
