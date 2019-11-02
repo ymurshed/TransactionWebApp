@@ -68,3 +68,6 @@ A sample app.log will look like:
 GlobalExceptionFilter is implemented to handle the application exception in a common place and log it from there. Also it will re-direct the request to a page where general global exception will be displayed in a short format.  
 ![Global Exception Page](https://github.com/ymurshed/TransactionWebApp/blob/master/resources/Global-Exception.PNG)
 
+## Tools
+
+Visual Studio 2017, SQL Server 2014, ASP.NET Core 2.2, log4net.
